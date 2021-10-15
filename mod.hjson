@@ -1,23 +1,15 @@
-#the mod name as displayed in-game
-displayName: "Java Mod Template"
+displayName: "Rebel Flagship"
 
-#the internal name of your mod
-name: "example-java-mod"
+name: "rebel-flagship"
 
-#your name
-author: "You"
+author: "Farmer Thanos"
 
-#the fully qualified main class of the mod
-main: "example.ExampleJavaMod"
+main: "rebelFlagship.RebelFlagship"
 
-#the mod description as seen in the mod dialog
-description: "A Mindustry Java mod template."
+description: "Orange monstrosity of dread and bread."
 
-#the mod version
-version: 1.0
+version: 0.1
 
-#the minimum game build required to run this mod
-minGameVersion: 129
+minGameVersion: 131
 
-#this is a java mod
 java: true
