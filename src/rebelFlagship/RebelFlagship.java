@@ -8,14 +8,16 @@ import mindustry.game.EventType.*;
 import mindustry.gen.*;
 import mindustry.mod.*;
 import mindustry.ui.dialogs.*;
+import rebelFlagship.content.RebelUnits;
 
 public class RebelFlagship extends Mod{
 
-    public RebelFlagship(){
+    public RebelFlagship() {
         Log.info("ASB");
+    }
 
     @Override
     public void loadContent(){
-        Log.info("Loading some example content.");
+        new RebelUnits().load();
     }
 }
