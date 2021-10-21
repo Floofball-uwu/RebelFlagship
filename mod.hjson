@@ -8,7 +8,7 @@ main: "rebelFlagship.RebelFlagship"
 
 description: "Orange monstrosity of dread and bread. [#ff]ASB[]"
 
-version: 0.3
+version: 0.4
 
 minGameVersion: 132
 
