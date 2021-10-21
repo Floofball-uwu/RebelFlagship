@@ -7,6 +7,8 @@ import mindustry.entities.abilities.Ability;
 import mindustry.gen.*;
 import mindustry.input.Binding;
 
+import static mindustry.Vars.*;
+
 public class FTLJumpAbility extends Ability {
 
     float distance = 10;
@@ -19,7 +21,8 @@ public class FTLJumpAbility extends Ability {
 
     @Override
     public void update(Unit unit) {
-        if (Core.input.keyDown(Binding.boost)) {
+        // Add support for commanded units that got the same ability and an effect check
+        if (Core.input.keyDown(Binding.boost) && unit.isPlayer() && unit.team == player.team()) {
             // Visual effect and SFX goes here
 
             // Jump is done after a delay

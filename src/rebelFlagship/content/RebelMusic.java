@@ -11,7 +11,7 @@ public class RebelMusic{
     protected static Music loadMusic(String musicName, boolean ambient, boolean dark, boolean boss){
         if (!Vars.headless){
             String name = "music/" + musicName;
-            String path = Vars.tree.get(name + ".mp3").exists() ? name + ".ogg" : name + ".mp3";
+            String path = Vars.tree.get(name + ".ogg").exists() ? name + ".ogg" : name + ".mp3";
 
             Music music = new Music();
 
@@ -35,7 +35,9 @@ public class RebelMusic{
     public static Music
         LastBoss1;
 
-    public void load(){
+    public static void load(){
+        if(Vars.headless) return;
+
         LastBoss1 = loadMusic("Last_Boss1", false, false, true);
     }
 }
