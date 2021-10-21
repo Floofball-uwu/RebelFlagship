@@ -19,6 +19,7 @@ import mindustry.graphics.Pal;
 import mindustry.type.*;
 import mindustry.type.ammo.ItemAmmoType;
 import mindustry.world.meta.*;
+import rebelFlagship.entities.abilities.FTLJumpAbility;
 import rebelFlagship.entities.abilities.ShipShieldAbility;
 
 import static arc.graphics.g2d.Draw.color;
@@ -26,6 +27,7 @@ import static arc.graphics.g2d.Lines.stroke;
 
 public class RebelUnits implements ContentList {
 
+    // Until proper sprites are added, this will stay for easy reconfig of mounts
     float rebelFlagshipWeapons1X = 45f;
     float rebelFlagshipWeapons1Y = 24f;
     float rebelFlagshipWeapons2X = 24f;
@@ -60,7 +62,8 @@ public class RebelUnits implements ContentList {
                 ammoCapacity = 400;
                 ammoType = new ItemAmmoType(Items.surgeAlloy, 10);
 
-                abilities.add(new ShipShieldAbility(90f, 7f, 9000f, 60f * 6.5f, "75a2e0"));
+                abilities.add(new ShipShieldAbility(90f, 7f, 9000f, 60f * 6.5f, "75a2e0"),
+                    new FTLJumpAbility(25, 10));
                 drawShields = false;
 
                 // Ion Cannon

@@ -62,8 +62,6 @@ public class ShipShieldAbility extends Ability {
         this.color = color;
     }
 
-    ShipShieldAbility(){}
-
     @Override
     public void update(Unit unit){
         if(unit.shield < max){
