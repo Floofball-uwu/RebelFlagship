@@ -5,4 +5,4 @@ A mindustry mod that adds the rebel flagship from FTL: Faster Than Light.
 
 
 ## Disclaimer
-I do not own Last Stand (by Ben Prunty) nor made the original rebel flagship sprite.
+I do not own Last Stand (by Ben Prunty), made the original rebel flagship sprite, nor do I take credit for the SFX from FTL: Faster Than Light.

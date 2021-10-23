@@ -30,16 +30,14 @@ public class RebelLastStand {
                     Musics.game8.stop();
                     Musics.game9.stop();
                 } else if (!RebelMusic.LastBoss1.isPlaying()) {
-                    Log.info("Playing LastBoss1");
                     RebelMusic.LastBoss1.setVolume(1.2f);
                     RebelMusic.LastBoss1.play();
                 }
             }
-            if (RebelMusic.LastBoss1.isPlaying() && Groups.unit.contains(e -> e.type != rebelFlagship) || Musics.menu.isPlaying()) {
+            if (!Groups.unit.contains(e -> e.type == rebelFlagship) || Musics.menu.getVolume() >= 0.5f) {
                 // Cheap fading because I'm too lazy to reflect lmao
-                Log.info("Fading LastBoss1");
-                RebelMusic.LastBoss1.setVolume(RebelMusic.LastBoss1.getVolume() - 0.1f);
-                if (RebelMusic.LastBoss1.getVolume() <= 0) RebelMusic.LastBoss1.stop();
+                if(RebelMusic.LastBoss1.getVolume() >= 0) RebelMusic.LastBoss1.setVolume(RebelMusic.LastBoss1.getVolume() - 0.1f);
+                else if (RebelMusic.LastBoss1.getVolume() <= 0) RebelMusic.LastBoss1.stop();
             }
         }, 0f, 0.5f);
     }

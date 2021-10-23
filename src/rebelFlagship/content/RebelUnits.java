@@ -63,7 +63,7 @@ public class RebelUnits implements ContentList {
                 ammoType = new ItemAmmoType(Items.surgeAlloy, 10);
 
                 abilities.add(new ShipShieldAbility(90f, 7f, 9000f, 60f * 6.5f, "75a2e0"),
-                    new FTLJumpAbility(100, 10));
+                    new FTLJumpAbility(100f, 10f, 1f));
                 drawShields = false;
 
                 // Ion Cannon
