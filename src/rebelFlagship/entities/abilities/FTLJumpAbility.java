@@ -10,6 +10,7 @@ import arc.util.Timer;
 import arc.util.Tmp;
 import mindustry.entities.Effect;
 import mindustry.entities.abilities.Ability;
+import mindustry.entities.units.UnitController;
 import mindustry.gen.*;
 import mindustry.graphics.Pal;
 import mindustry.input.Binding;
@@ -40,7 +41,7 @@ public class FTLJumpAbility extends Ability {
     @Override
     public void update(Unit unit) {
         // Add support for commanded units that got the same ability and an effect check
-        if (Core.input.keyDown(Binding.boost) && player.unit() == unit && !unit.hasEffect(FTL_cooldown)) {
+        if (Core.input.keyDown(Binding.boost) && (player.unit() == unit || unit.controller().isBeingControlled(player.unit())) && !unit.hasEffect(FTL_cooldown)) {
 
             unitX = (Angles.trnsx(unit.rotation, distance * 8) + unit.x);
             unitY = (Angles.trnsy(unit.rotation, distance * 8) + unit.y);
@@ -54,7 +55,6 @@ public class FTLJumpAbility extends Ability {
                 Timer.schedule(() -> {
                     unit.x(unitX);
                     unit.y(unitY);
-                    Log.info("ftlstarRev start here");
                     RebelFx.ftlstarRev.at(unit.x, unit.y, unit.rotation, unit);
                     unit.apply(FTL_cooldown, cooldown * 60);
                     jumping = false;

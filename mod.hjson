@@ -2,13 +2,13 @@ displayName: "[#e58e2e]Rebel Flagship"
 
 name: "rebel-flagship"
 
-author: "Farmer Thanos"
+author: "Farmer Thanos \n Thanks Zhenьkotron for helping out with sprites!"
 
 main: "rebelFlagship.RebelFlagship"
 
 description: "Orange monstrosity of dread and bread. [#ff]ASB[]"
 
-version: 0.5
+version: 0.6
 
 minGameVersion: 132
 

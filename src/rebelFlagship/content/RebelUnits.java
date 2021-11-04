@@ -8,7 +8,6 @@ import arc.math.Mathf;
 import mindustry.content.*;
 import mindustry.ctype.*;
 import mindustry.entities.Effect;
-import mindustry.entities.abilities.ForceFieldAbility;
 import mindustry.entities.bullet.BasicBulletType;
 import mindustry.entities.bullet.EmpBulletType;
 import mindustry.entities.bullet.LaserBulletType;
@@ -21,6 +20,7 @@ import mindustry.type.ammo.ItemAmmoType;
 import mindustry.world.meta.*;
 import rebelFlagship.entities.abilities.FTLJumpAbility;
 import rebelFlagship.entities.abilities.ShipShieldAbility;
+import rebelFlagship.entities.RebelWeapon;
 
 import static arc.graphics.g2d.Draw.color;
 import static arc.graphics.g2d.Lines.stroke;
@@ -66,10 +66,8 @@ public class RebelUnits implements ContentList {
                     new FTLJumpAbility(100f, 10f, 1f));
                 drawShields = false;
 
-                // Ion Cannon
-                // PLACEHOLDER SPRITE
-
-                weapons.add(new Weapon("emp-cannon-mount") {{
+                weapons.add(new RebelWeapon("rebel-flagship-triple-ion-cannon-mount") {{
+                                secondHeatDelay = 0f;
                                 mirror = false;
                                 rotate = true;
 
@@ -83,8 +81,9 @@ public class RebelUnits implements ContentList {
                                 shake = 3f;
                                 rotateSpeed = 1.1f;
                                 shadow = 30f;
-                                shootY = 7f;
-                                recoil = 4f;
+                                shootY = 9f;
+                                xRand = 4f;
+                                recoil = 1f;
                                 cooldownTime = reload - 20f;
                                 shootSound = Sounds.laser;
 
@@ -101,7 +100,7 @@ public class RebelUnits implements ContentList {
                                     hitColor = lightColor = Pal.lancerLaser;
                                     lightRadius = 60f;
                                     clipSize = 100f;
-                                    shootEffect = Fx.hitEmpSpark;
+                                    shootEffect = Fx.hitLancer;
                                     smokeEffect = Fx.shootBigSmoke2;
                                     lifetime = 57f;
                                     sprite = "circle-bullet";
@@ -141,9 +140,7 @@ public class RebelUnits implements ContentList {
                                         float offset = Mathf.randomSeed(e.id, 360f);
                                         for (int i = 0; i < points; i++) {
                                             float angle = i * 360f / points + offset;
-                                            //for(int s : Mathf.zeroOne){
-                                            Drawf.tri(e.x + Angles.trnsx(angle, rad), e.y + Angles.trnsy(angle, rad), 6f, 50f * e.fout(), angle/* + s*180f*/);
-                                            //}
+                                            Drawf.tri(e.x + Angles.trnsx(angle, rad), e.y + Angles.trnsy(angle, rad), 6f, 50f * e.fout(), angle);
                                         }
 
                                         Fill.circle(e.x, e.y, 12f * e.fout());
@@ -154,10 +151,8 @@ public class RebelUnits implements ContentList {
                                 }};
                             }},
 
-                    // Laser Beam
-                    // PLACEHOLDER SPRITE
-
-                    new Weapon("large-laser-mount") {{
+                    new RebelWeapon("rebel-flagship-boss-laser-beam-mount") {{
+                        secondHeatDelay = 0.9f;
                         mirror = false;
                         rotate = true;
 
@@ -170,10 +165,12 @@ public class RebelUnits implements ContentList {
                         reload = 80f;
                         recoil = 4f;
                         shootSound = Sounds.laser;
-                        shadow = 20f;
+                        shadow = 10f;
+                        cooldownTime = reload - 20f;
 
                         bullet = new LaserBulletType() {{
                             damage = 248f;
+                            buildingDamageMultiplier = 1.5f;
                             sideAngle = 20f;
                             sideWidth = 1.5f;
                             sideLength = 80f;
@@ -185,8 +182,9 @@ public class RebelUnits implements ContentList {
                     }},
                     // Triple Heavy ""Laser""
                     // PLACEHOLDER SPRITE
-                    new Weapon("toxopid-cannon") {
+                    new RebelWeapon("toxopid-cannon") {
                         {
+                            secondHeatDelay = 0f;
                             mirror = false;
                             rotate = true;
                             rotateSpeed = 1.2f;
@@ -206,6 +204,7 @@ public class RebelUnits implements ContentList {
 
                             bullet = new BasicBulletType(10f, 175) {
                                 {
+                                    buildingDamageMultiplier = 1.5f;
                                     pierce = true;
                                     pierceCap = 2;
                                     width = 14f;
@@ -222,8 +221,9 @@ public class RebelUnits implements ContentList {
                     },
                     // Missile Launcher
                     // PLACEHOLDER SPRITE
-                    new Weapon("sei-launcher") {
+                    new RebelWeapon("sei-launcher") {
                         {
+                            secondHeatDelay = 0f;
                             mirror = false;
 
                             x = rebelFlagshipWeapons2X;
@@ -246,7 +246,9 @@ public class RebelUnits implements ContentList {
                             xRand = 8f;
                             shotDelay = 6f;
 
-                            bullet = new MissileBulletType(6.4f, 450) {{
+                            bullet = new MissileBulletType(6.4f, 1350) {{
+                                buildingDamageMultiplier = 2.0f;
+                                absorbable = false;
                                 homingPower = 0.12f;
                                 width = 13f;
                                 height = 15f;
